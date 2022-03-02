@@ -36,6 +36,7 @@ public class UserService {
         return UserModel.builder()
                 .username(userModelDTO.getUsername())
                 .email(userModelDTO.getEmail())
+                .password(userModelDTO.getPassword())
                 .build();
     }
 

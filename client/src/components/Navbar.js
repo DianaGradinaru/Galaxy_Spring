@@ -2,13 +2,13 @@ import React from "react";
 
 const Navbar = () => {
     return (
-        <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
-            <div class="container-fluid">
-                <a class="navbar-brand text-white" href="#">
+        <nav className="navbar navbar-expand-lg navbar-light" id="navbar">
+            <div className="container">
+                <a className="navbar-brand text-white" href="#">
                     Galaxy
                 </a>
                 <button
-                    class="navbar-toggler"
+                    className="navbar-toggler"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup"
@@ -16,14 +16,17 @@ const Navbar = () => {
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                 >
-                    <span class="navbar-toggler-icon"></span>
+                    <span className="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav ms-auto ">
-                        <a class="nav-link  text-white" href="#">
+                <div
+                    className="collapse navbar-collapse"
+                    id="navbarNavAltMarkup"
+                >
+                    <div className="navbar-nav ms-auto ">
+                        <a className="nav-link  text-white" href="#">
                             Login
                         </a>
-                        <a class="nav-link text-white" href="#">
+                        <a className="nav-link text-white" href="#">
                             Register
                         </a>
                     </div>
