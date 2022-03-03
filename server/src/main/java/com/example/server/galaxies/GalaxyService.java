@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class GalaxyService {
@@ -27,6 +29,19 @@ public class GalaxyService {
         galaxyRepository.save(newGalaxyModel);
     }
 
+    public List<GalaxyModelDTO> findAll() {
+        List<GalaxyModel> allGalaxies = galaxyRepository.findAll();
+        return adapt(allGalaxies);
+    }
+
+    private List<GalaxyModelDTO> adapt(List<GalaxyModel> allGalaxies) {
+        ArrayList<GalaxyModelDTO> galaxyModelDTOS = new ArrayList<>();
+        for (GalaxyModel galaxy : allGalaxies) {
+            galaxyModelDTOS.add(covertToGalaxyDTOModel(galaxy));
+        }
+        return galaxyModelDTOS;
+    }
+
     private GalaxyModel convertToGalaxyModel(GalaxyModelDTO galaxyModelDTO) {
         return GalaxyModel.builder()
                 .sent_by_id(galaxyModelDTO.getSent_by_id())
@@ -45,4 +60,6 @@ public class GalaxyService {
                 .created_at(galaxyModel.getCreated_at())
                 .build();
     }
+
+
 }
