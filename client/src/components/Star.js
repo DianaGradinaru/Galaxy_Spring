@@ -1,24 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
+import noimage from "../img/noimage.png";
 
-const Star = () => {
-    const fetchStars = async () => {
-        const request = await fetch("http://localhost:8080/api/v1/galaxies");
-        const response = await request.json();
-        console.log(response[0]);
-    };
-
+const Star = ({ id, created_at, image, message, sent_by_id }) => {
     return (
-        <div className="starCard shadow p-3 mb-5 bg-white rounded">
-            <div className="starCard-body">
-                <h5 className="card-title font-weight-bold">Sent by:</h5>
-                <p className="starCard-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                </p>
-                <img src="..." className="starCard-img" alt="..." />
-                <a href="#" className="btn btn-primary" onClick={fetchStars}>
-                    Go somewhere
-                </a>
+        <div className="card shadow p-3 mb-5 bg-white rounded">
+            <div className="card-body text-start">
+                <p className="card-text">{message}</p>
+                <img src={noimage} className="card-img" alt="" />
+                {/* <img src={image} className="card-img" alt="" /> */}
+
+                <div className="card-footer">
+                    <span className="font-weight-bold text-start">
+                        UserName {sent_by_id}
+                        <small id="card-footer-right" title="Add to favorites">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                className="bi bi-star"
+                                viewBox="0 0 16 16"
+                            >
+                                <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                            </svg>
+                        </small>
+                    </span>
+                    <p className="sent-at text-muted ">{created_at}</p>
+                </div>
             </div>
         </div>
     );
