@@ -18,8 +18,7 @@
     font-size: large;
 }
 
-#sidebarMenu {
-    background-color: #778da9;
+#sidebarMenu a {
     color: #1b263b;
 }
 
@@ -40,4 +39,12 @@ svg {
 
 #card-footer-right {
     float: right;
+}
+
+.btnSendStar {
+    background-color: #778da9;
+    color: white;
+    border-radius: 4px;
+    border: none;
+    padding: 7px 20px;
 }

@@ -18,6 +18,8 @@ public class GalaxyModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String username;
+
     private Long sent_by_id;
     private String message;
     private String image;

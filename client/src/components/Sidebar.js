@@ -3,11 +3,11 @@ import React from "react";
 const Sidebar = () => {
     return (
         <nav id="sidebarMenu" className="col-md-3 d-md-block sidebar collapse">
-            <div className="position-sticky pt-3 ">
+            <div className="position-fixed pt-3 ">
                 <ul className="nav flex-column">
                     <li className="nav-item">
                         <a
-                            className="nav-link active text-white"
+                            className="nav-link active"
                             aria-current="page"
                             href="#"
                         >
@@ -25,7 +25,7 @@ const Sidebar = () => {
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link text-white" href="#">
+                        <a className="nav-link" href="#">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="16"
@@ -41,7 +41,7 @@ const Sidebar = () => {
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link text-white" href="#">
+                        <a className="nav-link" href="#">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="16"
@@ -56,7 +56,7 @@ const Sidebar = () => {
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link text-white" href="#">
+                        <a className="nav-link" href="#">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="16"
@@ -71,7 +71,7 @@ const Sidebar = () => {
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link text-white" href="#">
+                        <a className="nav-link" href="#">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="16"

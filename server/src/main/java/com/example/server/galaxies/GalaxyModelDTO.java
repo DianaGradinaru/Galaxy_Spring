@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 public class GalaxyModelDTO {
 
     private Long id;
+    private String username;
     private Long sent_by_id;
     private String message;
     private String image;

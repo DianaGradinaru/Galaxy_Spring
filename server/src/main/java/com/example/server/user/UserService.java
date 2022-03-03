@@ -23,6 +23,16 @@ public class UserService {
 
     }
 
+    public String findUserById(Long id) {
+        ArrayList<UserModelDTO> allUsers = new ArrayList<>();
+        for (UserModelDTO user : allUsers) {
+            if (user.getUserid() == id) {
+                return user.getUsername();
+            }
+        }
+        return "";
+    }
+
     private List<UserModelDTO> adapt(List<UserModel> allUsers) {
         ArrayList<UserModelDTO> userModelDTOS = new ArrayList<>();
         for (UserModel user : allUsers) {

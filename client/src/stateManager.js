@@ -8,6 +8,7 @@ const state = {
             image: null,
             message: null,
             sent_by_id: null,
+            username: null,
         },
     ]),
 };

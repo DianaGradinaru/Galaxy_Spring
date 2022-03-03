@@ -1,17 +1,19 @@
-import React, { useEffect } from "react";
-import noimage from "../img/noimage.png";
+import React from "react";
+import moment from "moment";
 
-const Star = ({ id, created_at, image, message, sent_by_id }) => {
+const Star = ({ id, created_at, image, message, sent_by_id, username }) => {
+    const created = moment(created_at).fromNow();
+
     return (
-        <div className="card shadow p-3 mb-5 bg-white rounded">
+        <div className="card shadow p-3 mb-5 bg-white rounded" data-id={id}>
             <div className="card-body text-start">
                 <p className="card-text">{message}</p>
-                <img src={noimage} className="card-img" alt="" />
-                {/* <img src={image} className="card-img" alt="" /> */}
-
+                {image != null && (
+                    <img src={image} className="card-img" alt="" />
+                )}
                 <div className="card-footer">
                     <span className="font-weight-bold text-start">
-                        UserName {sent_by_id}
+                        UserName {username}
                         <small id="card-footer-right" title="Add to favorites">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +27,9 @@ const Star = ({ id, created_at, image, message, sent_by_id }) => {
                             </svg>
                         </small>
                     </span>
-                    <p className="sent-at text-muted ">{created_at}</p>
+                    <p className="sent-at text-muted ">
+                        <small title={created_at}> {created}</small>
+                    </p>
                 </div>
             </div>
         </div>
