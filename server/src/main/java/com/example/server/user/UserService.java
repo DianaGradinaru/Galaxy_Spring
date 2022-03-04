@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class UserService {
@@ -26,7 +27,7 @@ public class UserService {
     public String findUserById(Long id) {
         ArrayList<UserModelDTO> allUsers = new ArrayList<>();
         for (UserModelDTO user : allUsers) {
-            if (user.getUserid() == id) {
+            if (Objects.equals(user.getUserid(), id)) {
                 return user.getUsername();
             }
         }

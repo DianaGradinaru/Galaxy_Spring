@@ -40,7 +40,7 @@ public class GalaxyService {
     public GalaxyModel findLast() {
         List<GalaxyModel> allGalaxies = galaxyRepository.findAll();
         GalaxyModel last = allGalaxies.get(allGalaxies.size() - 1);
-        last.setUsername(userService.findUserById(last.getSent_by_id()));
+//        last.setUsername(userService.findUserById(last.getSent_by_id()));
         return last;
     }
 

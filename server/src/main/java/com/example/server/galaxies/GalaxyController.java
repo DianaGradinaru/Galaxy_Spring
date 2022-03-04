@@ -39,4 +39,9 @@ public class GalaxyController {
     public List<GalaxyModelDTO> getAllGalaxies(){
         return galaxyService.findAll();
     }
+
+    @GetMapping("/last")
+    public GalaxyModel getAllGalaxies1(){
+        return galaxyService.findLast();
+    }
 }
