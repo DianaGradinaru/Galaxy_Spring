@@ -10,6 +10,8 @@ const Sidebar = () => {
                             className="nav-link active"
                             aria-current="page"
                             href="#"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
