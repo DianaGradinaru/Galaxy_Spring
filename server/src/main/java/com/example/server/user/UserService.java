@@ -29,10 +29,10 @@ public class UserService implements UserDetailsService {
     private final ConfirmationTokenService confirmationTokenService;
 
 
-    public void addUser(UserModelDTO userModelDTO) {
-        UserModel userModelToBeSaved = convertToModel(userModelDTO);
-        userRepository.save(userModelToBeSaved);
-    }
+//    public void addUser(UserModelDTO userModelDTO) {
+//        UserModel userModelToBeSaved = convertToModel(userModelDTO);
+//        userRepository.save(userModelToBeSaved);
+//    }
 
     public String signUpUser(UserModel user) {
         boolean userExists = userRepository.findByEmail(user.getEmail()).isPresent();

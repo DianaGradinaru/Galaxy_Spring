@@ -24,12 +24,18 @@ public class RegistrationService {
     public String register(RegistrationRequest request) {
 
         String token = userService.signUpUser(
-                new UserModel(
-                        request.getUsername(),
-                        request.getEmail(),
-                        request.getPassword(),
-                        UserRole.USER
-                )
+//                new UserModel(
+//                        request.getUsername(),
+//                        request.getPassword(),
+//                        request.getEmail(),
+//                        UserRole.USER
+//                )
+                UserModel.builder()
+                        .username(request.getUsername())
+                        .password(request.getPassword())
+                        .email(request.getEmail())
+                        .userRole(UserRole.USER)
+                        .build()
         );
         String link = "http://localhost:8080/api/v1/registration/confirm?token=" + token;
         emailSender.send(
