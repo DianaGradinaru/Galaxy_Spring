@@ -1,6 +1,11 @@
 package com.example.server.user;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -8,10 +13,15 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
+@AllArgsConstructor
 public class UserService {
+
 
     @Autowired
     private UserRepository userRepository;
+
+    private final static String USER_NOT_FOUND_MSG = "User with email %s not found";
+//    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public void addUser(UserModelDTO userModelDTO) {
         UserModel userModelToBeSaved = convertToModel(userModelDTO);
@@ -60,4 +70,9 @@ public class UserService {
     }
 
 
+    public UserDetails loadUserByUsername(String username)
+            throws UsernameNotFoundException {
+        return userRepository.findByUsername(username)
+                .orElseThrow( () -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, username)));
+    }
 }
