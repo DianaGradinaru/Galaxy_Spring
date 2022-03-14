@@ -28,6 +28,7 @@ public class GalaxyController {
 //
 //    }
 
+//    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping
     public GalaxyModel addGalaxy(@RequestBody GalaxyModel galaxyModel) {
         galaxyModel.setUsername(userService.findUserById(galaxyModel.getSent_by_id()));
@@ -35,11 +36,13 @@ public class GalaxyController {
         return galaxyService.findLast();
     }
 
+//    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping
     public List<GalaxyModelDTO> getAllGalaxies(){
         return galaxyService.findAll();
     }
 
+//    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/last")
     public GalaxyModel getAllGalaxies1(){
         return galaxyService.findLast();
