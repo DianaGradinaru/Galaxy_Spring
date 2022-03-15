@@ -77,6 +77,7 @@ public class UserService implements UserDetailsService {
         return "";
     }
 
+
     private List<UserModelDTO> adapt(List<UserModel> allUsers) {
         ArrayList<UserModelDTO> userModelDTOS = new ArrayList<>();
         for (UserModel user : allUsers) {

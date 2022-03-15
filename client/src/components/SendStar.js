@@ -29,15 +29,15 @@ const SendStar = () => {
 
     return (
         <div
-            class="modal fade"
+            className="modal fade"
             id="exampleModal"
-            tabindex="-1"
+            tabIndex="-1"
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
         >
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-body">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-body">
                         <form onSubmit={handlePost}>
                             <div className="form-group">
                                 <textarea
@@ -56,18 +56,18 @@ const SendStar = () => {
                         {200 - text.length}
                     </small> */}
                             </div>
-                            <div class="row">
-                                <div class="col">
+                            <div className="row">
+                                <div className="col">
                                     <label
-                                        for="file-upload"
-                                        class="custom-file-upload"
+                                        // for="file-upload"
+                                        className="custom-file-upload"
                                     >
                                         Image
                                     </label>
                                 </div>
                                 {/* </div>
-                            <div class="row"> */}
-                                <div class="col">
+                            <div className="row"> */}
+                                <div className="col">
                                     <input
                                         type="file"
                                         name="file"
@@ -76,7 +76,7 @@ const SendStar = () => {
                                         id="file-upload"
                                     />
                                 </div>
-                                <div class="col ms-auto">
+                                <div className="col ms-auto">
                                     <button
                                         type="submit"
                                         className="btnSendStar"

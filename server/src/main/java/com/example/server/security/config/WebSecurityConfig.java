@@ -29,9 +29,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/api/v*/registration/**")
                 .permitAll()
+                .antMatchers("/api/v*/**")
+                .permitAll()
                 .anyRequest()
                 .authenticated().and()
-                .formLogin();
+                .formLogin()
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/", true);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.server.galaxies;
 
+import com.example.server.user.UserModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,8 +17,9 @@ import java.time.LocalDateTime;
 public class GalaxyModelDTO {
 
     private Long id;
-    private String username;
-    private Long sent_by_id;
+//    private String username;
+//    private Long sent_by_id;
+    private UserModel userModel;
     private String message;
     private String image;
     private LocalDateTime created_at;
