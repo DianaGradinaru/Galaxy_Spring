@@ -13,10 +13,10 @@ const SendStar = () => {
         const response = await api.post(
             "http://localhost:8080/api/v1/galaxies",
             {
-                message: text,
-                sent_by_id: 1,
+                // created_at: "",
                 image: "",
-                created_at: "",
+                message: text,
+                user: 1,
             }
         );
 

@@ -1,5 +1,6 @@
 package com.example.server.user;
 
+import com.example.server.galaxies.GalaxyModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -10,16 +11,20 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 
 @Getter
@@ -47,10 +52,22 @@ public class UserModel implements UserDetails {
     private String username;
     private String password;
     private String email;
+
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
+
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "user",
+            orphanRemoval = true
+    )
+    private List<GalaxyModel> listOfGalaxies = new ArrayList<>();
     private Boolean locked = false;
     private Boolean enabled = false;
+
+    public UserModel(Long userid) {
+        this.userid = userid;
+
+    }
 
     public UserModel(String username, String password, String email, UserRole userRole) {
         this.username = username;
@@ -58,6 +75,8 @@ public class UserModel implements UserDetails {
         this.email = email;
         this.userRole = userRole;
     }
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
