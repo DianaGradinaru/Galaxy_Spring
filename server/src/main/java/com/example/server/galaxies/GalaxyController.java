@@ -1,5 +1,6 @@
 package com.example.server.galaxies;
 
+import com.example.server.user.UserModel;
 import com.example.server.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,15 +23,9 @@ public class GalaxyController {
     @Autowired
     private UserService userService;
 
-//    @PostMapping
-//    public void addGalaxy(@RequestBody GalaxyModelDTO galaxyModelDTO) {
-//        galaxyService.addGalaxy(galaxyModelDTO);
-//
-//    }
 
     @PostMapping
     public GalaxyModel addGalaxy(@RequestBody GalaxyModel galaxyModel) {
-        galaxyModel.setUsername(userService.findUserById(galaxyModel.getSent_by_id()));
         galaxyService.addGalaxy(galaxyModel);
         return galaxyService.findLast();
     }

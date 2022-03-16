@@ -18,14 +18,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping
-    public void addUser(@RequestBody UserModelDTO userModelDTO) {
-        userService.addUser(userModelDTO);
-    }
-
-    @GetMapping
-    public List<UserModelDTO> getAllUsers() {
-        return userService.findAll();
-
-    }
+//    @PostMapping
+//    public void addUser(@RequestBody UserModelDTO userModelDTO) {
+//        userService.addUser(userModelDTO);
+//    }
+//
+//    @GetMapping
+//    public List<UserModelDTO> getAllUsers() {
+//        return userService.findAll();
+//
+//    }
 }
