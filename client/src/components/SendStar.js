@@ -75,7 +75,7 @@ const SendStar = () => {
                 e.target.reset();
             }
         }
-        console.log(e.target.file.files[0]);
+        // console.log(e.target.file.files[0]);
         await uploadFiles(file, true);
     };
 
@@ -132,6 +132,7 @@ const SendStar = () => {
                                     <button
                                         type="submit"
                                         className="btnSendStar"
+                                        data-bs-dismiss="modal"
                                     >
                                         Send star
                                     </button>
