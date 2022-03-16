@@ -1,3 +1,5 @@
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { storage } from "../firebase";
 import React, { useState } from "react";
 import state from "../stateManager";
 import { useAtom } from "jotai";
@@ -6,25 +8,75 @@ import api from "../fetch";
 const SendStar = () => {
     const [text, setText] = useState("");
     const [stars, setStars] = useAtom(state.cardsAtom);
+    const [imageUrl, setImageUrl] = useState("");
+
+    const uploadFiles = (file, posting = false) => {
+        if (!file) return;
+
+        const random_string = Math.random().toString(36).substring(2, 7);
+        const newName = file.name.replace(
+            /(\.png|\.jpe?g|\.gif)/gim,
+            random_string + "$1"
+        );
+
+        const storageRef = ref(storage, `/files/${newName}`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
+
+        uploadTask.on(
+            "state_changed",
+            () => {},
+            (err) => console.log(err),
+            () => {
+                getDownloadURL(uploadTask.snapshot.ref).then(async (url) => {
+                    // setImageUrl(url);
+                    if (posting) {
+                        const response = await api.post(
+                            process.env.REACT_APP_SERVER_ALL_GALAXIES,
+                            {
+                                image: url,
+                                message: text,
+                                user: 1,
+                            }
+                        );
+
+                        if (response) {
+                            setStars([response, ...stars]);
+                            setText("");
+                            setImageUrl("");
+                            // console.log(stars);
+                            document.getElementById("file-upload").value = "";
+                        }
+                    }
+                });
+            }
+        );
+    };
 
     const handlePost = async (e) => {
         e.preventDefault();
 
-        const response = await api.post(
-            "http://localhost:8080/api/v1/galaxies",
-            {
-                // created_at: "",
-                image: "",
-                message: text,
-                user: 1,
-            }
-        );
+        let file = e.target.file.files[0];
+        if (!file) {
+            const response = await api.post(
+                process.env.REACT_APP_SERVER_ALL_GALAXIES,
+                {
+                    image: "",
+                    message: text,
+                    user: 1,
+                }
+            );
 
-        if (response) {
-            setStars([response, ...stars]);
-            setText("");
-            console.log(stars);
+            if (response) {
+                setStars([response, ...stars]);
+                setText("");
+                setImageUrl("");
+                // console.log(stars);
+                // document.getElementById("file-upload").value = "";
+                e.target.reset();
+            }
         }
+        console.log(e.target.file.files[0]);
+        await uploadFiles(file, true);
     };
 
     return (
@@ -38,7 +90,7 @@ const SendStar = () => {
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-body">
-                        <form onSubmit={handlePost}>
+                        <form id="star-form" onSubmit={handlePost}>
                             <div className="form-group">
                                 <textarea
                                     type="text"
@@ -71,7 +123,7 @@ const SendStar = () => {
                                     <input
                                         type="file"
                                         name="file"
-                                        accept=".jpg,.gif,.png"
+                                        accept=".jpg,.jpeg,.gif,.png"
                                         className="form-control-file"
                                         id="file-upload"
                                     />
