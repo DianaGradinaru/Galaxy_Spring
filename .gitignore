@@ -57,3 +57,4 @@
 
 /server/.env
 /client/.env
+client/.env

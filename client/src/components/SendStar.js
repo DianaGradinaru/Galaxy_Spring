@@ -59,7 +59,7 @@ const SendStar = () => {
                             <div className="row">
                                 <div className="col">
                                     <label
-                                        // for="file-upload"
+                                        htmlFor="file-upload"
                                         className="custom-file-upload"
                                     >
                                         Image

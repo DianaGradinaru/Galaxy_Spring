@@ -76,6 +76,15 @@ public class UserModel implements UserDetails {
         this.userRole = userRole;
     }
 
+    public void addGalaxy(GalaxyModel galaxyModel) {
+        listOfGalaxies.add(galaxyModel);
+        galaxyModel.setUser(this);
+    }
+
+    public void removeGalaxy(GalaxyModel galaxyModel) {
+        listOfGalaxies.remove(galaxyModel);
+        galaxyModel.setUser(null);
+    }
 
 
     @Override
