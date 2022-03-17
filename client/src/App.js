@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
 
 import state from "./stateManager";
 import { useAtom } from "jotai";
@@ -13,16 +12,10 @@ import Feed from "./components/Feed";
 const App = () => {
     const [stars, setStars] = useAtom(state.cardsAtom);
 
-    // const fetchUsers = async () => {
-    //     const request = await fetch();
-    //     const response = await request.json();
-    //     console.log(response);
-    // };
-
     useEffect(() => {
         const fetchStars = async () => {
             const response = await fetch.get(
-                "http://localhost:8080/api/v1/galaxies"
+                process.env.REACT_APP_SERVER_ALL_GALAXIES
             );
             if (response) {
                 setStars(response.sort((a, b) => b.id - a.id));
