@@ -1,24 +1,20 @@
 import { useNavigate } from "react-router-dom";
 import api from "../fetch";
 
-const Register = () => {
+const Login = () => {
     const navigate = useNavigate();
 
-    const handleRegister = async (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
 
-        const req = await api.post(
-            "http://localhost:8080/api/v1/registration",
-            {
-                username: e.target.username.value,
-                email: e.target.email.value,
-                password: e.target.password.value,
-            }
-        );
+        const req = await api.post("http://localhost:8080/login", {
+            username: e.target.username.value,
+            password: e.target.password.value,
+        });
 
         if (req.ok) {
             const res = await req.json();
-            navigate("/login");
+            navigate("/");
         }
     };
 
@@ -26,55 +22,40 @@ const Register = () => {
         <div className="modal-dialog">
             <div className="modal-content">
                 <div className="modal-header">
-                    <h5 className="modal-title">Register</h5>
+                    <h5 id="loginmodaltitle" className="modal-title">
+                        Login
+                    </h5>
                 </div>
                 <div className="modal-body">
-                    <form onSubmit={handleRegister}>
+                    <form onSubmit={handleLogin}>
                         <div className="mb-3">
                             <label htmlFor="username" className="form-label">
-                                Username
+                                Your username
                             </label>
                             <input
                                 type="text"
+                                name="username"
                                 className="form-control"
                                 id="username"
-                                name="username"
                                 aria-describedby="usernameHelp"
                                 required
                             />
                         </div>
-
-                        <div className="mb-3">
-                            <label htmlFor="email" className="form-label">
-                                Your email address
-                            </label>
-                            <input
-                                type="email"
-                                className="form-control"
-                                id="email"
-                                name="email"
-                                aria-describedby="emailHelp"
-                                required
-                            />
-                            <div id="emailHelp" className="form-text">
-                                We'll never share your email with anyone else.
-                            </div>
-                        </div>
                         <div className="mb-3">
                             <label htmlFor="password" className="form-label">
-                                Create Password
+                                Your password
                             </label>
                             <input
                                 type="password"
+                                name="password"
                                 className="form-control"
                                 id="password"
                                 required
-                                name="password"
                             />
                         </div>
 
                         <button type="submit" className="btn btn-secondary">
-                            Submit
+                            Log in
                         </button>
                     </form>
                 </div>
@@ -83,4 +64,4 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default Login;

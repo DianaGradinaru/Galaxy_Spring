@@ -23,6 +23,7 @@ const api = {
     },
     post: async (url, data) => {
         const req = await fetch(url, {
+            mode: "cors",
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),

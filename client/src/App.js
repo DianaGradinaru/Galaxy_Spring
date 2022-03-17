@@ -7,6 +7,7 @@ import state from "./stateManager";
 import { useAtom } from "jotai";
 import fetch from "./fetch";
 import Register from "./components/Register";
+import Login from "./components/Login";
 import Feed from "./components/Feed";
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
             <Navbar />
             <div className="container mt-5 pt-1">
                 <Routes>
+                    <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/" element={<Feed />} />
                 </Routes>
