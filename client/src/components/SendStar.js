@@ -28,7 +28,6 @@ const SendStar = () => {
             (err) => console.log(err),
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then(async (url) => {
-                    // setImageUrl(url);
                     if (posting) {
                         const response = await api.post(
                             process.env.REACT_APP_SERVER_ALL_GALAXIES,
@@ -43,7 +42,6 @@ const SendStar = () => {
                             setStars([response, ...stars]);
                             setText("");
                             setImageUrl("");
-                            // console.log(stars);
                             document.getElementById("file-upload").value = "";
                         }
                     }
@@ -70,12 +68,9 @@ const SendStar = () => {
                 setStars([response, ...stars]);
                 setText("");
                 setImageUrl("");
-                // console.log(stars);
-                // document.getElementById("file-upload").value = "";
                 e.target.reset();
             }
         }
-        // console.log(e.target.file.files[0]);
         await uploadFiles(file, true);
     };
 

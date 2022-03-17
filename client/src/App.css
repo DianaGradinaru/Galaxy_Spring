@@ -60,3 +60,7 @@ input[type="file"] {
     border: none;
     padding: 7px 30px;
 }
+
+.card {
+    width: 700px;
+}

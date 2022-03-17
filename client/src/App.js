@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
-import Star from "./components/Star";
-import SendStar from "./components/SendStar";
+
 import state from "./stateManager";
 import { useAtom } from "jotai";
 import fetch from "./fetch";
+import Register from "./components/Register";
+import Feed from "./components/Feed";
 
 const App = () => {
     const [stars, setStars] = useAtom(state.cardsAtom);
@@ -33,15 +35,10 @@ const App = () => {
         <div className="App">
             <Navbar />
             <div className="container mt-5 pt-1">
-                <div className="row">
-                    <Sidebar />
-                    <div className="col-md-9">
-                        <SendStar />
-                        {stars.map((s) => (
-                            <Star key={s.id} {...s} />
-                        ))}
-                    </div>
-                </div>
+                <Routes>
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/" element={<Feed />} />
+                </Routes>
             </div>
         </div>
     );
