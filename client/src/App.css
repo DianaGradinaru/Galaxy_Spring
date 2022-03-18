@@ -1,12 +1,5 @@
-.App-header {
-    background-color: #222;
-    height: 150px;
-    padding: 20px;
-    color: white;
-}
-
-.App-intro {
-    font-size: large;
+.App {
+    background-color: #fafaf9;
 }
 
 #sidebarMenu a {
@@ -15,6 +8,10 @@
 
 #navbar {
     background-color: #415a77;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 9;
 }
 
 svg {
@@ -54,4 +51,20 @@ input[type="file"] {
 
 .card.shadow {
     width: 700px;
+}
+
+.modal-body {
+    background-color: #fafaf9;
+    width: 550px;
+}
+
+.form-control.login-form {
+    width: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container.mt-5.pt-1 {
+    display: flex;
 }

@@ -19,14 +19,14 @@ const Login = () => {
     };
 
     return (
-        <div className="modal-dialog">
-            <div className="modal-content">
-                <div className="modal-header">
+        <div className="form-control login-form">
+            <div className="login-form-content">
+                <div className="login-form-header">
                     <h5 id="loginmodaltitle" className="modal-title">
                         Login
                     </h5>
                 </div>
-                <div className="modal-body">
+                <div className="login-form-body">
                     <form onSubmit={handleLogin}>
                         <div className="mb-3">
                             <label htmlFor="username" className="form-label">

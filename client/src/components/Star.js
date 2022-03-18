@@ -5,7 +5,11 @@ const Star = ({ id, created_at, image, message, sent_by_id, username }) => {
     const created = moment(created_at).fromNow();
 
     return (
-        <div className="card shadow p-3 mb-5 bg-white rounded" data-id={id}>
+        <div
+            className="card shadow p-3 mb-5 bg-white rounded"
+            data-id={id}
+            id="the-card"
+        >
             <div className="card-body text-start">
                 <p className="card-text">{message}</p>
                 {image != null && (
