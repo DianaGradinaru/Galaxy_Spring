@@ -13,7 +13,7 @@ const Star = ({ id, created_at, image, message, sent_by_id, username }) => {
                 )}
                 <div className="card-footer">
                     <span className="font-weight-bold text-start">
-                        UserName {username}
+                        Dee {username}
                         <small id="card-footer-right" title="Add to favorites">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"

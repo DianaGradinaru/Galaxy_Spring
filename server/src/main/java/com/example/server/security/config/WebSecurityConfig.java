@@ -11,6 +11,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.cors.CorsConfiguration;
+
+import java.util.List;
 
 @CrossOrigin
 @Configuration
@@ -24,17 +27,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .cors().and()
-                .csrf().disable()
+//                .cors().and()
+                .cors().configurationSource(request -> {
+                    var cors = new CorsConfiguration();
+                    cors.setAllowedOrigins(List.of("http://localhost:3000/"));
+                    cors.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+                    cors.setAllowedHeaders(List.of("*"));
+                    return cors;
+                });
+        http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/v*/registration/**")
-                .permitAll()
-                .antMatchers("/api/v*/**")
-                .permitAll()
-                .anyRequest()
-                .authenticated().and()
+                .antMatchers("/api/v*/registration/**").permitAll()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/api/v*/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
                 .formLogin()
-                .loginProcessingUrl("/login")
+//                .loginProcessingUrl("/login")
+//                .loginPage("/login").permitAll()
                 .defaultSuccessUrl("/", true);
     }
 
